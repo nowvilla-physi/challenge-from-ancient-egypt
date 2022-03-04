@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.physi.nowvilla.challenge_from_ancient_egypt.challenge_from_ancient_egypt">
+    package="com.physi.nowvilla.challenge_from_ancient_egypt">
    <application
         android:label="challenge_from_ancient_egypt"
         android:name="${applicationName}"
