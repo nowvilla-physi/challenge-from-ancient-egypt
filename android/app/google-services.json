@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402874248924",
+    "project_id": "challenge-from-ancient-egypt",
+    "storage_bucket": "challenge-from-ancient-egypt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402874248924:android:7ba5da3010d2b8e208ce19",
+        "android_client_info": {
+          "package_name": "com.physi.nowvilla.challenge_from_ancient_egypt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402874248924-m5kirrl4r0b3rl5t3jp6n23eatmmc5kl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeiTzVEUq4yfwtDgQ56h9ilimNo_cQx0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402874248924-m5kirrl4r0b3rl5t3jp6n23eatmmc5kl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
