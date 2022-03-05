@@ -30,6 +30,10 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void _toKeyList() {
+    Navigator.of(context).pushNamed(Strings.keyListPath);
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -62,9 +66,7 @@ class _HomeState extends State<Home> {
                     shape: const StadiumBorder(),
                     elevation: Dimens.elevation,
                   ),
-                  onPressed: () {
-                    print("###");
-                  },
+                  onPressed: () => _toKeyList()
                 ),
               ),
             ),
