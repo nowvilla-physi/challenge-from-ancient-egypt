@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'importer.dart';
 
+// This widget is the root of your application.
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  App({Key? key}) : super(key: key);
+  final router = AppRouter();
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,6 +22,8 @@ class App extends StatelessWidget {
         designSize: const Size(360, 690),
         builder: () => const Home(title: Strings.appTitle),
       ),
+      onGenerateRoute: (RouteSettings settings) =>
+          router.createGenerateRoute(settings),
     );
   }
 }
