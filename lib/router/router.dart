@@ -1,4 +1,3 @@
-import 'package:challenge_from_ancient_egypt/view/key_list.dart';
 import 'package:flutter/material.dart';
 import '../importer.dart';
 
@@ -9,6 +8,14 @@ class AppRouter {
       return MaterialPageRoute(
         builder: (context) {
           return const KeyList(key: Key(Strings.keyListPath));
+        },
+      );
+    }
+    else if (settings.name == Strings.mysteryListPath) {
+      // final args = settings.arguments as MoviePlayerArguments;
+      return MaterialPageRoute(
+        builder: (context) {
+          return const MysteryList(key: Key(Strings.mysteryListPath));
         },
       );
     }

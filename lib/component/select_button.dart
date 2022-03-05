@@ -20,12 +20,11 @@ class SelectButton extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * 0.8,
+      height: size.height * 0.05,
       child: ElevatedButton(
         child: Text(
           name,
-          style: TextStyle(
-            fontSize: 16.sp,
-          ),
+          style: TextStyle(fontSize: 16.sp),
         ),
         style: ElevatedButton.styleFrom(
           primary: backgroundColor,

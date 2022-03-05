@@ -27,7 +27,7 @@ class AppBackButton extends StatelessWidget {
           shape: const StadiumBorder(),
           elevation: Dimens.elevation,
         ),
-        onPressed: () => action(context),
+        onPressed: () => action(),
       ),
     );
   }

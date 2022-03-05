@@ -1,18 +1,15 @@
 class Strings {
   // Title.
-  static const appTitle = "古代エジプトからの挑戦状";
+  static const appTitle = '古代エジプトからの挑戦状';
 
   // Button.
-  static const startButton = "謎解きを開始する";
-  static const backButton = "戻る";
+  static const startButton = '謎解きを開始する';
+  static const backButton = '戻る';
+  static const resolveButton = '謎を解く';
 
   // Path.
-  static const keyListPath = "/key/list";
-  static const keyBirdPath = "$keyListPath/bird";
-  static const keyAnimalPath = "$keyListPath/animal";
-  static const keyHumanPath = "$keyListPath/human";
-  static const questionBirdPath = "$keyBirdPath/question";
-  static const questionAnimalPath = "$keyAnimalPath/question";
-  static const questionHumanPath = "$keyHumanPath/question";
-  static const finalQuestionPath = "/final/question";
+  static const keyListPath = '/key/list';
+  static const mysteryListPath = '/mystery/list';
+  static const mysteryPath = '/mystery';
+  static const finalMysteryPath = '/mystery/final';
 }
