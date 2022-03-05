@@ -4,6 +4,7 @@ class Strings {
 
   // Button.
   static const startButton = "謎解きを開始する";
+  static const backButton = "戻る";
 
   // Path.
   static const keyListPath = "/key/list";

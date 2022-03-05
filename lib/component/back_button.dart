@@ -2,38 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../importer.dart';
 
-class SelectButton extends StatelessWidget {
-  const SelectButton({
+class AppBackButton extends StatelessWidget {
+  const AppBackButton({
     Key? key,
     required this.action,
-    required this.backgroundColor,
-    required this.name,
-    required this.textColor,
   }) : super(key: key);
   final Function action;
-  final Color backgroundColor;
-  final String name;
-  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      width: size.width * 0.8,
+      width: size.width * 0.5,
       child: ElevatedButton(
         child: Text(
-          name,
+          Strings.backButton,
           style: TextStyle(
             fontSize: 16.sp,
           ),
         ),
         style: ElevatedButton.styleFrom(
-          primary: backgroundColor,
-          onPrimary: textColor,
+          primary: AppColors.white,
+          onPrimary: AppColors.black,
           shape: const StadiumBorder(),
           elevation: Dimens.elevation,
         ),
-        onPressed: () => action(),
+        onPressed: () => action(context),
       ),
     );
   }

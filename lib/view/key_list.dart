@@ -6,31 +6,45 @@ import '../importer.dart';
 class KeyList extends StatelessWidget {
   const KeyList({Key? key}) : super(key: key);
 
-  void tap() {
-    print("###");
+  void _toHome(BuildContext context) {
+    Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: CarouselSlider(
-          options: CarouselOptions(height: 400.0),
-          items: [1,2,3,4,5].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: const BoxDecoration(
-                        color: Colors.amber
-                    ),
-                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
-                );
-              },
-            );
-          }).toList(),
-        )
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: Dimens.verticalPadding.h,
+          ),
+          child: Column(
+            children: <Widget>[
+              CarouselSlider(
+                options: CarouselOptions(height: size.height * 0.5),
+                items: [1, 2, 3].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                          width: size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 8.w),
+                          decoration: const BoxDecoration(color: Colors.amber),
+                          child: Text(
+                            'text $i',
+                            style: TextStyle(fontSize: 16.0),
+                          ));
+                    },
+                  );
+                }).toList(),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 48),
+                child: AppBackButton(action: _toHome),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
