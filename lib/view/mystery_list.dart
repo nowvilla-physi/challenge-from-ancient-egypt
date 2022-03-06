@@ -1,55 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../importer.dart';
 
-class MysteryList extends StatefulWidget {
+class MysteryList extends ConsumerWidget {
   const MysteryList({Key? key, required this.kind}) : super(key: key);
   final String kind;
-
-  @override
-  State<MysteryList> createState() => _MysteryListState();
-}
-
-class _MysteryListState extends State<MysteryList> {
-  MysteryKind? kind;
-
-  @override
-  void initState() {
-    super.initState();
-    kind = MysteryKindExtension.of(widget.kind);
-  }
+  final prefix = 'assets/images/mystery';
 
   List<String> _createImagePaths(MysteryKind kind) {
     switch (kind) {
       case MysteryKind.bird:
         return [
-          "assets/images/mystery1.png",
-          "assets/images/mystery2.png",
-          "assets/images/mystery3.png",
+          '${prefix}1.png',
+          '${prefix}2.png',
+          '${prefix}3.png',
         ];
       case MysteryKind.animal:
         return [
-          "assets/images/mystery4.png",
-          "assets/images/mystery5.png",
-          "assets/images/mystery6.png",
+          '${prefix}4.png',
+          '${prefix}5.png',
+          '${prefix}6.png',
         ];
       case MysteryKind.human:
         return [
-          "assets/images/mystery7.png",
-          "assets/images/mystery8.png",
-          "assets/images/mystery9.png",
+          '${prefix}7.png',
+          '${prefix}8.png',
+          '${prefix}9.png',
         ];
       default:
-        return [""];
+        return [''];
     }
   }
 
-  void tap() {
-    print("###");
+  List<MysteryItem> _createMysteryItems(
+      MysteryKind mysteryKind, WidgetRef ref) {
+    final items = ref.watch(appViewModelNotifierProvider).items;
+    return items
+        .where((item) => MysteryKindExtension.of(item.kind) == mysteryKind)
+        .toList();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mysteryKind = MysteryKindExtension.of(kind)!;
+    final items = _createMysteryItems(mysteryKind, ref);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -64,13 +60,16 @@ class _MysteryListState extends State<MysteryList> {
                 ),
               ),
               ImageButton(
-                imagePath: _createImagePaths(kind!)[0],
+                item: items[0],
+                imagePath: _createImagePaths(mysteryKind)[0],
               ),
               ImageButton(
-                imagePath: _createImagePaths(kind!)[1],
+                item: items[1],
+                imagePath: _createImagePaths(mysteryKind)[1],
               ),
               ImageButton(
-                imagePath: _createImagePaths(kind!)[2],
+                item: items[2],
+                imagePath: _createImagePaths(mysteryKind)[2],
               ),
               Container(
                 margin: EdgeInsets.only(

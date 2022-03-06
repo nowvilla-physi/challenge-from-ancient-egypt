@@ -6,8 +6,10 @@ class ImageButton extends StatefulWidget {
   const ImageButton({
     Key? key,
     required this.imagePath,
+    required this.item,
   }) : super(key: key);
   final String imagePath;
+  final MysteryItem item;
 
   @override
   State<ImageButton> createState() => _ImageButtonState();
@@ -15,8 +17,12 @@ class ImageButton extends StatefulWidget {
 
 class _ImageButtonState extends State<ImageButton> {
   final bool _isResolved = false;
-  void tap(BuildContext context) {
-    print("!");
+
+  void _toMystery(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      Strings.mysteryPath,
+      arguments: widget.item,
+    );
   }
 
   @override
@@ -33,7 +39,7 @@ class _ImageButtonState extends State<ImageButton> {
             child: SelectButton(
               textColor: AppColors.shadow,
               backgroundColor: AppColors.white,
-              action: tap,
+              action: _toMystery,
               name: _isResolved ? Strings.clearButton : Strings.releaseButton,
               width: size.width * 0.4,
             ),

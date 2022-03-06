@@ -4,7 +4,6 @@ import '../importer.dart';
 class AppRouter {
   MaterialPageRoute? createGenerateRoute(RouteSettings settings) {
     if (settings.name == Strings.keyListPath) {
-      // final args = settings.arguments as MoviePlayerArguments;
       return MaterialPageRoute(
         builder: (context) {
           return const KeyList(key: Key(Strings.keyListPath));
@@ -17,6 +16,16 @@ class AppRouter {
           return MysteryList(
             key: const Key(Strings.mysteryListPath),
             kind: args,
+          );
+        },
+      );
+    } else if (settings.name == Strings.mysteryPath) {
+      final args = settings.arguments as MysteryItem;
+      return MaterialPageRoute(
+        builder: (context) {
+          return Mystery(
+            key: const Key(Strings.mysteryPath),
+            item: args,
           );
         },
       );

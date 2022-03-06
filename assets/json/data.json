@@ -4,61 +4,61 @@
             "id": 1,
             "kind": "bird",
             "isResolved": false,
-            "questionImagePath": "assets/images/question1.png"
+            "imagePath": "assets/images/question1.png"
         },
         {
             "id": 2,
             "kind": "bird",
             "isResolved": false,
-            "questionImagePath": "assets/images/question2.png"
+            "imagePath": "assets/images/question2.png"
         },
         {
             "id": 3,
-            "kind": "animal",
+            "kind": "bird",
             "isResolved": false,
-            "questionImagePath": "assets/images/question3.png"
+            "imagePath": "assets/images/question3.png"
         },
         {
             "id": 4,
             "kind": "animal",
             "isResolved": false,
-            "questionImagePath": "assets/images/question4.png"
+            "imagePath": "assets/images/question4.png"
         },
         {
             "id": 5,
             "kind": "animal",
             "isResolved": false,
-            "questionImagePath": "assets/images/question5.png"
+            "imagePath": "assets/images/question5.png"
         },
         {
             "id": 6,
-            "kind": "human",
+            "kind": "animal",
             "isResolved": false,
-            "questionImagePath": "assets/images/question6.png"
+            "imagePath": "assets/images/question6.png"
         },
         {
             "id": 7,
             "kind": "human",
             "isResolved": false,
-            "questionImagePath": "assets/images/question7.png"
+            "imagePath": "assets/images/question7.png"
         },
         {
             "id": 8,
             "kind": "human",
             "isResolved": false,
-            "questionImagePath": "assets/images/question8.png"
+            "imagePath": "assets/images/question8.png"
         },
         {
             "id": 9,
             "kind": "human",
             "isResolved": false,
-            "questionImagePath": "assets/images/question9.png"
+            "imagePath": "assets/images/question9.png"
         },
         {
             "id": 10,
             "kind": "final",
             "isResolved": false,
-            "questionImagePath": "assets/images/question10.png"
+            "imagePath": "assets/images/question10.png"
         }
     ]
 }

@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
                     shape: const StadiumBorder(),
                     elevation: Dimens.elevation,
                   ),
-                  onPressed: () => _toKeyList()
+                  onPressed: () => _toKeyList(),
                 ),
               ),
             ),
