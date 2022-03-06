@@ -9,17 +9,19 @@ class SelectButton extends StatelessWidget {
     required this.backgroundColor,
     required this.name,
     required this.textColor,
+    required this.width,
   }) : super(key: key);
   final Function action;
   final Color backgroundColor;
   final String name;
   final Color textColor;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      width: size.width * 0.8,
+      width: width,
       height: size.height * 0.05,
       child: ElevatedButton(
         child: Text(
@@ -32,7 +34,7 @@ class SelectButton extends StatelessWidget {
           shape: const StadiumBorder(),
           elevation: Dimens.elevation,
         ),
-        onPressed: () => action(),
+        onPressed: () => action(context),
       ),
     );
   }

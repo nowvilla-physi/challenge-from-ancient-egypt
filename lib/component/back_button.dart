@@ -3,11 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../importer.dart';
 
 class AppBackButton extends StatelessWidget {
-  const AppBackButton({
-    Key? key,
-    required this.action,
-  }) : super(key: key);
-  final Function action;
+  const AppBackButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class AppBackButton extends StatelessWidget {
           shape: const StadiumBorder(),
           elevation: Dimens.elevation,
         ),
-        onPressed: () => action(),
+        onPressed: () => Navigator.of(context).pop(),
       ),
     );
   }
