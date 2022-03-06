@@ -8,6 +8,7 @@ class Strings {
   static const resolveButton = '謎を解く';
   static const releaseButton = 'タップで解放';
   static const clearButton = 'CLEARED!!';
+  static const sendButton = '回答する';
 
   // Path.
   static const keyListPath = '/key/list';
@@ -17,4 +18,5 @@ class Strings {
 
   // message.
   static const resolveMysteryMsg = 'それぞれの謎を解き明かそう。';
+  static const inputLabel = '解答欄';
 }

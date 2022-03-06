@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'importer.dart';
 
 // This widget is the root of your application.
-class App extends StatelessWidget {
+class App extends ConsumerWidget {
   App({Key? key}) : super(key: key);
   final router = AppRouter();
 
+  Future<void> _loadMysteryItems(WidgetRef ref) async {
+    await ref.watch(appViewModelNotifierProvider).fetchMysteryItems();
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final items = ref.watch(appViewModelNotifierProvider).items;
+    if (items.isEmpty) {
+      _loadMysteryItems(ref);
+    }
+
     return MaterialApp(
       title: Strings.appTitle,
       theme: ThemeData(
