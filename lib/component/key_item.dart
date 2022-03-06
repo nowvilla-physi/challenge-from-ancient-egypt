@@ -5,13 +5,20 @@ import '../importer.dart';
 class KeyItem extends StatelessWidget {
   const KeyItem({
     Key? key,
-    required this.action,
     required this.imagePath,
+    required this.kind,
     required this.title,
   }) : super(key: key);
-  final Function action;
   final String imagePath;
+  final String kind;
   final String title;
+
+  void _toMysteryList(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      Strings.mysteryListPath,
+      arguments: kind,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +56,11 @@ class KeyItem extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 24.h),
               child: SelectButton(
-                action: action,
+                action: _toMysteryList,
                 backgroundColor: AppColors.baseColor,
                 name: Strings.resolveButton,
                 textColor: AppColors.white,
+                width: size.width * 0.8,
               ),
             )
           ],

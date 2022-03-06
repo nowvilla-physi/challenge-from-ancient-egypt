@@ -15,25 +15,20 @@ class _KeyListState extends State<KeyList> {
   final _initialKeyList = [
     {
       'title': 'File.1',
+      'kind': 'bird',
       'imagePath': 'assets/images/ic_key_bird.png',
     },
     {
       'title': 'File.2',
+      'kind': 'animal',
       'imagePath': 'assets/images/ic_key_animal.png',
     },
     {
       'title': 'File.3',
+      'kind': 'human',
       'imagePath': 'assets/images/ic_key_human.png',
     },
   ];
-
-  void _toHome() {
-    Navigator.of(context).pop();
-  }
-
-  void _toMysteryList() {
-    Navigator.of(context).pushNamed(Strings.mysteryListPath);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +56,7 @@ class _KeyListState extends State<KeyList> {
                         margin: EdgeInsets.symmetric(horizontal: 8.w),
                         child: KeyItem(
                           imagePath: item['imagePath']!,
-                          action: _toMysteryList,
+                          kind: item['kind']!,
                           title: item['title']!,
                         ),
                       );
@@ -93,7 +88,7 @@ class _KeyListState extends State<KeyList> {
             ),
             Container(
               margin: EdgeInsets.only(top: 48.h),
-              child: AppBackButton(action: _toHome),
+              child: const AppBackButton(),
             ),
           ],
         ),

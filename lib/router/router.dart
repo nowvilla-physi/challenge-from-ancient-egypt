@@ -10,12 +10,14 @@ class AppRouter {
           return const KeyList(key: Key(Strings.keyListPath));
         },
       );
-    }
-    else if (settings.name == Strings.mysteryListPath) {
-      // final args = settings.arguments as MoviePlayerArguments;
+    } else if (settings.name == Strings.mysteryListPath) {
+      final args = settings.arguments as String;
       return MaterialPageRoute(
         builder: (context) {
-          return const MysteryList(key: Key(Strings.mysteryListPath));
+          return MysteryList(
+            key: const Key(Strings.mysteryListPath),
+            kind: args,
+          );
         },
       );
     }
