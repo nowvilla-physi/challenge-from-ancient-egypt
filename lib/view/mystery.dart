@@ -19,18 +19,31 @@ class _MysteryState extends State<Mystery> {
     final item = widget.item;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          alignment: Alignment.center,
-          child: Column(
-            children: <Widget>[
-              Image.asset(item.imagePath),
-              Answer(id: item.id),
-              Container(
-                margin: EdgeInsets.only(top: 16.h),
-                child: const AppBackButton(),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: <Widget>[
+                  Image.asset(item.imagePath),
+                  Answer(id: item.id),
+                  Container(
+                    margin: EdgeInsets.only(top: 48.h),
+                    child: const AppBackButton(),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Positioned(
+              right: 20.w,
+              bottom: 92.h,
+              child: FloatingActionButton(
+                child: const Icon(Icons.lightbulb),
+                backgroundColor: AppColors.mainColor,
+                onPressed: () { print("ssss");},
+              ),
+            ),
+          ],
         ),
       ),
     );
