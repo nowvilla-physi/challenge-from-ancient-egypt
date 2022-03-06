@@ -18,6 +18,27 @@ class _AnswerState extends State<Answer> {
   late String answer;
   String _input = "";
 
+  final snackBar = SnackBar(
+    backgroundColor: AppColors.red,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
+      ),
+    ),
+    content: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          Strings.emptyAlertMsg,
+          style: TextStyle(
+            color: AppColors.white,
+            fontSize: 18.sp,
+          ),
+        ),
+      ],
+    ),
+  );
+
   @override
   void initState() {
     super.initState();
@@ -25,7 +46,28 @@ class _AnswerState extends State<Answer> {
   }
 
   void _check() {
-    print("check");
+    if (_input.trim().isEmpty) {
+      _clearEmptyAlert();
+      _showEmptyAlert();
+    } else {
+      _judge();
+    }
+  }
+
+  void _showEmptyAlert() {
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void _clearEmptyAlert() {
+    ScaffoldMessenger.of(context).clearSnackBars();
+  }
+
+  void _judge() {
+    if (_input.compareTo(answer) == 0) {
+      print("ok");
+    } else {
+      print("ng");
+    }
   }
 
   @override
@@ -43,12 +85,22 @@ class _AnswerState extends State<Answer> {
                 color: AppColors.white,
                 fontSize: 18.sp,
               ),
+              onChanged: (value) {
+                setState(() {
+                  _input = value;
+                });
+              },
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
                     color: AppColors.green,
                     width: 2.0,
+                  ),
+                ),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.green,
                   ),
                 ),
                 labelText: Strings.inputLabel,

@@ -18,5 +18,6 @@ class Strings {
 
   // message.
   static const resolveMysteryMsg = 'それぞれの謎を解き明かそう。';
+  static const emptyAlertMsg = '回答を入力してください。';
   static const inputLabel = '解答欄';
 }
