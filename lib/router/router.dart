@@ -29,6 +29,16 @@ class AppRouter {
           );
         },
       );
+    } else if (settings.name == Strings.judgementPath) {
+      final args = settings.arguments as bool;
+      return MaterialPageRoute(
+        builder: (context) {
+          return Judgement(
+            key: const Key(Strings.judgementPath),
+            isCorrect: args,
+          );
+        },
+      );
     }
     assert(false, 'Need to implement ${settings.name}');
     return null;

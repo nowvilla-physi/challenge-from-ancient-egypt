@@ -15,9 +15,18 @@ class Strings {
   static const mysteryListPath = '/mystery/list';
   static const mysteryPath = '/mystery';
   static const finalMysteryPath = '/mystery/final';
+  static const judgementPath = '/judgement';
 
   // message.
   static const resolveMysteryMsg = 'それぞれの謎を解き明かそう。';
-  static const emptyAlertMsg = '回答を入力してください。';
+  static const emptyAlertMsg = '解答を入力してください。';
   static const inputLabel = '解答欄';
+  static const successfulDecodingMsg = '- 解読成功 -';
+  static const decodingFailureMsg = '- 解読失敗 -';
+  static const correctMsg = '見事正解だ。';
+  static const incorrectMsg = '不正解だ。';
+  static const congratulationMsg = '解読おめでとう。';
+  static const hintMsg = 'ヒントを見てもいいぞ。';
+  static const nextMsg = '次の謎は果たして解けるかな。';
+  static const rethinkMsg = 'もう一度よく考えてみろ。';
 }

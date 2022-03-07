@@ -39,6 +39,8 @@ class _AnswerState extends State<Answer> {
     ),
   );
 
+  final _textEditingController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -50,7 +52,7 @@ class _AnswerState extends State<Answer> {
       _clearEmptyAlert();
       _showEmptyAlert();
     } else {
-      _judge();
+      _toJudgement();
     }
   }
 
@@ -62,12 +64,19 @@ class _AnswerState extends State<Answer> {
     ScaffoldMessenger.of(context).clearSnackBars();
   }
 
-  void _judge() {
+  void _toJudgement() {
+    var isCorrect = false;
     if (_input.compareTo(answer) == 0) {
-      print("ok");
-    } else {
-      print("ng");
+      isCorrect = true;
     }
+    Navigator.of(context).pushNamed(
+      Strings.judgementPath,
+      arguments: isCorrect,
+    );
+    setState(() {
+      _input = "";
+      _textEditingController.clear();
+    });
   }
 
   @override
@@ -81,6 +90,7 @@ class _AnswerState extends State<Answer> {
           SizedBox(
             width: size.width * 0.4,
             child: TextFormField(
+              controller: _textEditingController,
               style: TextStyle(
                 color: AppColors.white,
                 fontSize: 18.sp,

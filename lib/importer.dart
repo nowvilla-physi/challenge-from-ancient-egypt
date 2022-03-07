@@ -14,6 +14,7 @@ export 'repository/app_repository.dart';
 export 'repository/app_repository_impl.dart';
 export 'router/router.dart';
 export 'view/home.dart';
+export 'view/judgement.dart';
 export 'view/key_list.dart';
 export 'view/mystery_list.dart';
 export 'view/mystery.dart';
