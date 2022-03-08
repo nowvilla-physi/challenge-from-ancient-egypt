@@ -18,6 +18,7 @@ class Strings {
   static const judgementPath = '/judgement';
 
   // message.
+  static const clearedNumberLabel = 'クリア人数';
   static const resolveMysteryMsg = 'それぞれの謎を解き明かそう。';
   static const emptyAlertMsg = '解答を入力してください。';
   static const inputLabel = '解答欄';
