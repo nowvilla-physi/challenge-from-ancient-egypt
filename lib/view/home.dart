@@ -1,21 +1,21 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../importer.dart';
 
-class Home extends StatefulWidget {
+class Home extends ConsumerStatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  State<Home> createState() => _HomeState();
+  ConsumerState<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends ConsumerState<Home> {
   late Timer timer;
   final duration = 2;
   var _isTransparent = false;
-  var _clearedNumber = 0;
 
   @override
   void initState() {
@@ -23,6 +23,14 @@ class _HomeState extends State<Home> {
     timer = Timer.periodic(Duration(seconds: duration), (timer) {
       _updateTransparent();
     });
+
+    Future.delayed(Duration.zero, () {
+      _loadClearedCount(ref);
+    });
+  }
+
+  Future<void> _loadClearedCount(WidgetRef ref) async {
+    await ref.watch(appViewModelNotifierProvider).fetchClearedCount();
   }
 
   void _updateTransparent() {
@@ -38,6 +46,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final clearedCount =
+        ref.watch(appViewModelNotifierProvider).clearedCount ?? 0123;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -84,7 +94,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Text(
-                    _clearedNumber.toString(),
+                    clearedCount.toString(),
                     style: TextStyle(fontSize: 32.sp, color: AppColors.white),
                   ),
                 ],

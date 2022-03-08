@@ -15,6 +15,10 @@ class AppViewModel extends ChangeNotifier {
 
   List<MysteryItem> get items => _items;
 
+  int? _clearedCount;
+
+  int? get clearedCount => _clearedCount;
+
   Future<void> fetchMysteryItems() async {
     return _appRepository
         .getMysteryItems()
@@ -23,5 +27,14 @@ class AppViewModel extends ChangeNotifier {
         })
         .catchError((dynamic error) {})
         .whenComplete(() => notifyListeners());
+  }
+
+  Future<void> fetchClearedCount() async {
+    return _appRepository.getMClearedCount().then((value) {
+      _clearedCount = value;
+    }).catchError((dynamic error) {
+      _clearedCount = 0;
+
+    }).whenComplete(() => notifyListeners());
   }
 }
