@@ -41,7 +41,7 @@ class _KeyListState extends State<KeyList> {
               padding: EdgeInsets.only(top: Dimens.verticalPadding.h),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: size.height * 0.5,
+                  height: size.height * 0.6,
                   enableInfiniteScroll: false,
                   onPageChanged: (index, _) {
                     setState(() {
