@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
   late Timer timer;
   final duration = 2;
   var _isTransparent = false;
+  var _clearedNumber = 0;
 
   @override
   void initState() {
@@ -68,6 +69,25 @@ class _HomeState extends State<Home> {
                   ),
                   onPressed: () => _toKeyList(),
                 ),
+              ),
+            ),
+            Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(height: 156.h),
+                  Text(
+                    Strings.clearedNumberLabel,
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      color: AppColors.white,
+                    ),
+                  ),
+                  Text(
+                    _clearedNumber.toString(),
+                    style: TextStyle(fontSize: 32.sp, color: AppColors.white),
+                  ),
+                ],
               ),
             ),
             Align(
