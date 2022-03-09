@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../importer.dart';
 
-class Answer extends StatefulWidget {
+class Answer extends ConsumerStatefulWidget {
   const Answer({
     Key? key,
     required this.id,
@@ -11,10 +12,10 @@ class Answer extends StatefulWidget {
   final int id;
 
   @override
-  State<Answer> createState() => _AnswerState();
+  ConsumerState<Answer> createState() => _AnswerState();
 }
 
-class _AnswerState extends State<Answer> {
+class _AnswerState extends ConsumerState<Answer> {
   late String answer;
   String _input = "";
 
@@ -68,6 +69,7 @@ class _AnswerState extends State<Answer> {
     var isCorrect = false;
     if (_input.compareTo(answer) == 0) {
       isCorrect = true;
+      _save();
     }
     Navigator.of(context).pushNamed(
       Strings.judgementPath,
@@ -77,6 +79,10 @@ class _AnswerState extends State<Answer> {
       _input = "";
       _textEditingController.clear();
     });
+  }
+
+  Future<void> _save() async {
+    await ref.watch(appViewModelNotifierProvider).saveItem(widget.id);
   }
 
   @override

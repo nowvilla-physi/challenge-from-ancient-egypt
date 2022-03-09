@@ -20,6 +20,7 @@ class Strings {
   // message.
   static const clearedNumberLabel = 'クリア人数';
   static const resolveMysteryMsg = 'それぞれの謎を解き明かそう。';
+  static const lastMysteryMsg = '最終問題';
   static const emptyAlertMsg = '解答を入力してください。';
   static const inputLabel = '解答欄';
   static const successfulDecodingMsg = '- 解読成功 -';

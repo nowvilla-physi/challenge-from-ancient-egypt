@@ -1,18 +1,19 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../importer.dart';
 
-class KeyList extends StatefulWidget {
+class KeyList extends ConsumerStatefulWidget {
   const KeyList({Key? key}) : super(key: key);
 
   @override
-  State<KeyList> createState() => _KeyListState();
+  ConsumerState<KeyList> createState() => _KeyListState();
 }
 
-class _KeyListState extends State<KeyList> {
+class _KeyListState extends ConsumerState<KeyList> {
   int _currentPosition = 0;
-  final _initialKeyList = [
+  var _initialKeyList = [
     {
       'title': 'File.1',
       'kind': 'bird',
@@ -30,8 +31,26 @@ class _KeyListState extends State<KeyList> {
     },
   ];
 
+  void _createMysteryItems() {
+    if (_initialKeyList.length == 3) {
+      final items = ref.watch(appViewModelNotifierProvider).items;
+      final itemsExceptLastItem = items.sublist(0, items.length - 1);
+      final isAllResolved = itemsExceptLastItem.every((item) => item.isResolved == true);
+      if (isAllResolved) {
+        setState(() {
+          _initialKeyList = _initialKeyList + [{
+            'title': 'File.4',
+            'kind': 'final',
+            'imagePath': 'assets/images/ic_key_human.png',
+          }];
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    _createMysteryItems();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(

@@ -1,4 +1,4 @@
-enum MysteryKind { bird, animal, human }
+enum MysteryKind { bird, animal, human, last }
 
 extension MysteryKindExtension on MysteryKind {
   static MysteryKind? of(String kind) {
@@ -9,6 +9,8 @@ extension MysteryKindExtension on MysteryKind {
         return MysteryKind.animal;
       case 'human':
         return MysteryKind.human;
+      case 'final':
+        return MysteryKind.last;
       default:
         return null;
     }

@@ -16,8 +16,6 @@ class ImageButton extends StatefulWidget {
 }
 
 class _ImageButtonState extends State<ImageButton> {
-  final bool _isResolved = false;
-
   void _toMystery(BuildContext context) {
     Navigator.of(context).pushNamed(
       Strings.mysteryPath,
@@ -28,6 +26,7 @@ class _ImageButtonState extends State<ImageButton> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final _isResolved = widget.item.isResolved;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 48.w, vertical: 16.h),
       child: Stack(
@@ -37,7 +36,7 @@ class _ImageButtonState extends State<ImageButton> {
             margin: EdgeInsets.only(top: 184.h),
             alignment: Alignment.center,
             child: SelectButton(
-              textColor: AppColors.shadow,
+              textColor: _isResolved ? AppColors.green : AppColors.shadow,
               backgroundColor: AppColors.white,
               action: _toMystery,
               name: _isResolved ? Strings.clearButton : Strings.releaseButton,

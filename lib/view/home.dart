@@ -25,7 +25,7 @@ class _HomeState extends ConsumerState<Home> {
     });
 
     Future.delayed(Duration.zero, () {
-      _loadClearedCount(ref);
+      // _loadClearedCount(ref);
     });
   }
 
