@@ -3,7 +3,7 @@ class Strings {
   static const appTitle = '古代エジプトからの挑戦状';
 
   // Button.
-  static const startButton = '謎解きを開始する';
+  static const startButton = 'Tap Start!!';
   static const backButton = '戻る';
   static const resolveButton = '謎を解く';
   static const releaseButton = 'タップで解放';

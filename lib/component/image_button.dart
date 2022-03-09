@@ -36,7 +36,7 @@ class _ImageButtonState extends State<ImageButton> {
             margin: EdgeInsets.only(top: 184.h),
             alignment: Alignment.center,
             child: SelectButton(
-              textColor: _isResolved ? AppColors.green : AppColors.shadow,
+              textColor: _isResolved ? AppColors.green : AppColors.mainColor,
               backgroundColor: AppColors.white,
               action: _toMystery,
               name: _isResolved ? Strings.clearButton : Strings.releaseButton,

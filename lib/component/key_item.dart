@@ -25,46 +25,51 @@ class KeyItem extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.mainColor,
+        color: AppColors.key,
         borderRadius: BorderRadius.circular(16),
-        // boxShadow: const [
-        //   BoxShadow(
-        //     color: AppColors.shadow,
-        //     spreadRadius: 4,
-        //     blurRadius: 8,
-        //     offset: Offset(4, 4),
-        //   ),
-        // ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 40.sp,
-              ),
+      child: Stack(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Image.asset('assets/images/key_background.png',
+                fit: BoxFit.cover),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32.0.w, vertical: 16.h),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 16.h),
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.shadow,
+                        spreadRadius: 4,
+                        blurRadius: 8,
+                        offset: Offset(4, 4),
+                      ),
+                    ],
+                  ),
+                  child: SizedBox(
+                    width: size.width * 0.6,
+                    child: Image.asset(imagePath),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 24.h),
+                  child: SelectButton(
+                    action: _toMysteryList,
+                    backgroundColor: AppColors.baseColor,
+                    name: Strings.resolveButton,
+                    textColor: AppColors.white,
+                    width: size.width * 0.5,
+                  ),
+                )
+              ],
             ),
-            Container(
-              margin: EdgeInsets.only(top: 16.h),
-              child: SizedBox(
-                width: size.width * 0.6,
-                child: Image.asset(imagePath),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 24.h),
-              child: SelectButton(
-                action: _toMysteryList,
-                backgroundColor: AppColors.baseColor,
-                name: Strings.resolveButton,
-                textColor: AppColors.white,
-                width: size.width * 0.8,
-              ),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
