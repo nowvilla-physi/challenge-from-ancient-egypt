@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../importer.dart';
 
-class Judgement extends StatelessWidget {
+class Judgement extends ConsumerStatefulWidget {
   const Judgement({Key? key, required this.isCorrect}) : super(key: key);
   final bool isCorrect;
 
   @override
+  ConsumerState<Judgement> createState() => _JudgementState();
+}
+class _JudgementState extends ConsumerState<Judgement> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      final items = ref.watch(appViewModelNotifierProvider).items;
+      final isAllResolved = items.every((item) => item.isResolved == true);
+      if (isAllResolved) {
+        ref.watch(appViewModelNotifierProvider).saveClearCount();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final imageFile = isCorrect ? "ic_correct.png" : "ic_incorrect.png";
+    final imageFile = widget.isCorrect ? "ic_correct.png" : "ic_incorrect.png";
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -18,12 +36,12 @@ class Judgement extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Text(
-                  isCorrect
+                  widget.isCorrect
                       ? Strings.successfulDecodingMsg
                       : Strings.decodingFailureMsg,
                   style: TextStyle(
                     fontSize: 40.sp,
-                    color: isCorrect ? AppColors.green : AppColors.red,
+                    color: widget.isCorrect ? AppColors.green : AppColors.red,
                   ),
                 ),
                 SizedBox(height: 32.h),
@@ -34,17 +52,17 @@ class Judgement extends StatelessWidget {
                 ),
                 SizedBox(height: 48.h),
                 Text(
-                  isCorrect ? Strings.correctMsg : Strings.incorrectMsg,
+                  widget.isCorrect ? Strings.correctMsg : Strings.incorrectMsg,
                   style: TextStyle(fontSize: 20.sp, color: AppColors.white),
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  isCorrect ? Strings.congratulationMsg : Strings.hintMsg,
+                  widget.isCorrect ? Strings.congratulationMsg : Strings.hintMsg,
                   style: TextStyle(fontSize: 20.sp, color: AppColors.white),
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  isCorrect ? Strings.nextMsg : Strings.rethinkMsg,
+                  widget.isCorrect ? Strings.nextMsg : Strings.rethinkMsg,
                   style: TextStyle(fontSize: 20.sp, color: AppColors.white),
                 ),
                 Container(
