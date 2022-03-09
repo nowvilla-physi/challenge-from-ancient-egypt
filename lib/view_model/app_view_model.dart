@@ -23,14 +23,14 @@ class AppViewModel extends ChangeNotifier {
     return _appRepository
         .getMysteryItems()
         .then((value) {
-          _items = value;
-        })
+      _items = value;
+    })
         .catchError((dynamic error) {})
         .whenComplete(() => notifyListeners());
   }
 
   Future<void> fetchClearedCount() async {
-    return _appRepository.getMClearedCount().then((value) {
+    return _appRepository.getClearedCount().then((value) {
       _clearedCount = value;
     }).catchError((dynamic error) {
       _clearedCount = 0;
@@ -46,9 +46,13 @@ class AppViewModel extends ChangeNotifier {
       imagePath: targetItem.imagePath,
     );
     final newsItems =
-        _items.map((value) => value.id == id ? newItem : value).toList();
+    _items.map((value) => value.id == id ? newItem : value).toList();
     _appRepository.saveItem(newsItems);
     _items = newsItems;
     notifyListeners();
+  }
+
+  Future<void> saveClearCount() async {
+    return _appRepository.saveClearedCount();
   }
 }

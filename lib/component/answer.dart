@@ -48,7 +48,7 @@ class _AnswerState extends ConsumerState<Answer> {
     answer = dotenv.get('ANSWER${widget.id}');
   }
 
-  void _check() {
+  void _check() async {
     if (_input.trim().isEmpty) {
       _clearEmptyAlert();
       _showEmptyAlert();
@@ -65,11 +65,11 @@ class _AnswerState extends ConsumerState<Answer> {
     ScaffoldMessenger.of(context).clearSnackBars();
   }
 
-  void _toJudgement() {
+  void _toJudgement() async {
     var isCorrect = false;
     if (_input.compareTo(answer) == 0) {
       isCorrect = true;
-      _save();
+      await _save();
     }
     Navigator.of(context).pushNamed(
       Strings.judgementPath,
