@@ -7,5 +7,6 @@ class AppColors {
   static const white = Color(0xffffffff);
   static const green = Color(0xff39BB83);
   static const red = Color(0xffc50b0b);
-  static const shadow = Color(0xff937929);
+  static const shadow = Color(0xff2b2b2b);
+  static const key = Color(0xffD9B554);
 }

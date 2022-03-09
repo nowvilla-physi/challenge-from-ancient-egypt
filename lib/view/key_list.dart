@@ -41,7 +41,7 @@ class _KeyListState extends ConsumerState<KeyList> {
           _initialKeyList = _initialKeyList + [{
             'title': 'File.4',
             'kind': 'final',
-            'imagePath': 'assets/images/ic_key_human.png',
+            'imagePath': 'assets/images/ic_key_final.png',
           }];
         });
       }
@@ -60,7 +60,7 @@ class _KeyListState extends ConsumerState<KeyList> {
               padding: EdgeInsets.only(top: Dimens.verticalPadding.h),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: size.height * 0.55,
+                  height: size.height * 0.5,
                   enableInfiniteScroll: false,
                   onPageChanged: (index, _) {
                     setState(() {
