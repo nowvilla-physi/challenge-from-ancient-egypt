@@ -12,6 +12,7 @@ _$_MysteryItem _$$_MysteryItemFromJson(Map<String, dynamic> json) =>
       kind: json['kind'] as String,
       isResolved: json['isResolved'] as bool,
       imagePath: json['imagePath'] as String,
+      hint: json['hint'] as String,
     );
 
 Map<String, dynamic> _$$_MysteryItemToJson(_$_MysteryItem instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_MysteryItemToJson(_$_MysteryItem instance) =>
       'kind': instance.kind,
       'isResolved': instance.isResolved,
       'imagePath': instance.imagePath,
+      'hint': instance.hint,
     };

@@ -26,12 +26,14 @@ class _$MysteryItemTearOff {
       {required int id,
       required String kind,
       required bool isResolved,
-      required String imagePath}) {
+      required String imagePath,
+      required String hint}) {
     return _MysteryItem(
       id: id,
       kind: kind,
       isResolved: isResolved,
       imagePath: imagePath,
+      hint: hint,
     );
   }
 
@@ -49,6 +51,7 @@ mixin _$MysteryItem {
   String get kind => throw _privateConstructorUsedError;
   bool get isResolved => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
+  String get hint => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -61,7 +64,8 @@ abstract class $MysteryItemCopyWith<$Res> {
   factory $MysteryItemCopyWith(
           MysteryItem value, $Res Function(MysteryItem) then) =
       _$MysteryItemCopyWithImpl<$Res>;
-  $Res call({int id, String kind, bool isResolved, String imagePath});
+  $Res call(
+      {int id, String kind, bool isResolved, String imagePath, String hint});
 }
 
 /// @nodoc
@@ -78,6 +82,7 @@ class _$MysteryItemCopyWithImpl<$Res> implements $MysteryItemCopyWith<$Res> {
     Object? kind = freezed,
     Object? isResolved = freezed,
     Object? imagePath = freezed,
+    Object? hint = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -96,6 +101,10 @@ class _$MysteryItemCopyWithImpl<$Res> implements $MysteryItemCopyWith<$Res> {
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
+      hint: hint == freezed
+          ? _value.hint
+          : hint // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -107,7 +116,8 @@ abstract class _$MysteryItemCopyWith<$Res>
           _MysteryItem value, $Res Function(_MysteryItem) then) =
       __$MysteryItemCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String kind, bool isResolved, String imagePath});
+  $Res call(
+      {int id, String kind, bool isResolved, String imagePath, String hint});
 }
 
 /// @nodoc
@@ -126,6 +136,7 @@ class __$MysteryItemCopyWithImpl<$Res> extends _$MysteryItemCopyWithImpl<$Res>
     Object? kind = freezed,
     Object? isResolved = freezed,
     Object? imagePath = freezed,
+    Object? hint = freezed,
   }) {
     return _then(_MysteryItem(
       id: id == freezed
@@ -144,6 +155,10 @@ class __$MysteryItemCopyWithImpl<$Res> extends _$MysteryItemCopyWithImpl<$Res>
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
               as String,
+      hint: hint == freezed
+          ? _value.hint
+          : hint // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -155,7 +170,8 @@ class _$_MysteryItem with DiagnosticableTreeMixin implements _MysteryItem {
       {required this.id,
       required this.kind,
       required this.isResolved,
-      required this.imagePath});
+      required this.imagePath,
+      required this.hint});
 
   factory _$_MysteryItem.fromJson(Map<String, dynamic> json) =>
       _$$_MysteryItemFromJson(json);
@@ -168,10 +184,12 @@ class _$_MysteryItem with DiagnosticableTreeMixin implements _MysteryItem {
   final bool isResolved;
   @override
   final String imagePath;
+  @override
+  final String hint;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MysteryItem(id: $id, kind: $kind, isResolved: $isResolved, imagePath: $imagePath)';
+    return 'MysteryItem(id: $id, kind: $kind, isResolved: $isResolved, imagePath: $imagePath, hint: $hint)';
   }
 
   @override
@@ -182,7 +200,8 @@ class _$_MysteryItem with DiagnosticableTreeMixin implements _MysteryItem {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('kind', kind))
       ..add(DiagnosticsProperty('isResolved', isResolved))
-      ..add(DiagnosticsProperty('imagePath', imagePath));
+      ..add(DiagnosticsProperty('imagePath', imagePath))
+      ..add(DiagnosticsProperty('hint', hint));
   }
 
   @override
@@ -194,7 +213,8 @@ class _$_MysteryItem with DiagnosticableTreeMixin implements _MysteryItem {
             const DeepCollectionEquality().equals(other.kind, kind) &&
             const DeepCollectionEquality()
                 .equals(other.isResolved, isResolved) &&
-            const DeepCollectionEquality().equals(other.imagePath, imagePath));
+            const DeepCollectionEquality().equals(other.imagePath, imagePath) &&
+            const DeepCollectionEquality().equals(other.hint, hint));
   }
 
   @override
@@ -203,7 +223,8 @@ class _$_MysteryItem with DiagnosticableTreeMixin implements _MysteryItem {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(kind),
       const DeepCollectionEquality().hash(isResolved),
-      const DeepCollectionEquality().hash(imagePath));
+      const DeepCollectionEquality().hash(imagePath),
+      const DeepCollectionEquality().hash(hint));
 
   @JsonKey(ignore: true)
   @override
@@ -221,7 +242,8 @@ abstract class _MysteryItem implements MysteryItem {
       {required int id,
       required String kind,
       required bool isResolved,
-      required String imagePath}) = _$_MysteryItem;
+      required String imagePath,
+      required String hint}) = _$_MysteryItem;
 
   factory _MysteryItem.fromJson(Map<String, dynamic> json) =
       _$_MysteryItem.fromJson;
@@ -234,6 +256,8 @@ abstract class _MysteryItem implements MysteryItem {
   bool get isResolved;
   @override
   String get imagePath;
+  @override
+  String get hint;
   @override
   @JsonKey(ignore: true)
   _$MysteryItemCopyWith<_MysteryItem> get copyWith =>

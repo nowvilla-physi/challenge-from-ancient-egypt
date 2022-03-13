@@ -1,6 +1,8 @@
 class Strings {
   // Title.
   static const appTitle = '古代エジプトからの挑戦状';
+  static const hintTitle = 'ヒント';
+  static const hintCheckTitle = 'ヒントを見ますか？';
 
   // Button.
   static const startButton = 'Tap Start!!';
@@ -9,6 +11,9 @@ class Strings {
   static const releaseButton = 'タップで解放';
   static const clearButton = 'CLEARED!!';
   static const sendButton = '回答する';
+  static const closeButton = '閉じる';
+  static const yesButton = 'はい';
+  static const noButton = 'いいえ';
 
   // Path.
   static const keyListPath = '/key/list';

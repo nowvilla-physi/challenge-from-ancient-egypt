@@ -12,6 +12,7 @@ class MysteryItem with _$MysteryItem {
     required String kind,
     required bool isResolved,
     required String imagePath,
+    required String hint,
   }) = _MysteryItem;
 
   factory MysteryItem.fromJson(Map<String, dynamic> json) =>
