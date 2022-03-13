@@ -4,61 +4,71 @@
             "id": 1,
             "kind": "bird",
             "isResolved": false,
-            "imagePath": "assets/images/question1.png"
+            "imagePath": "assets/images/question1.png",
+            "hint": "数字の分だけ塗りつぶしてみましょう。"
         },
         {
             "id": 2,
             "kind": "bird",
             "isResolved": false,
-            "imagePath": "assets/images/question2.png"
+            "imagePath": "assets/images/question2.png",
+            "hint": "血液型の割合はどうなる？"
         },
         {
             "id": 3,
             "kind": "bird",
             "isResolved": false,
-            "imagePath": "assets/images/question3.png"
+            "imagePath": "assets/images/question3.png",
+            "hint": "意志です。"
         },
         {
             "id": 4,
             "kind": "animal",
             "isResolved": false,
-            "imagePath": "assets/images/question4.png"
+            "imagePath": "assets/images/question4.png",
+            "hint": "反転が大事です。"
         },
         {
             "id": 5,
             "kind": "animal",
             "isResolved": false,
-            "imagePath": "assets/images/question5.png"
+            "imagePath": "assets/images/question5.png",
+            "hint": "日は「J」です。"
         },
         {
             "id": 6,
             "kind": "animal",
             "isResolved": false,
-            "imagePath": "assets/images/question6.png"
+            "imagePath": "assets/images/question6.png",
+            "hint": "ビッグ・フォーとも呼ばれます。"
         },
         {
             "id": 7,
             "kind": "human",
             "isResolved": false,
-            "imagePath": "assets/images/question7.png"
+            "imagePath": "assets/images/question7.png",
+            "hint": "本当に長いです。"
         },
         {
             "id": 8,
             "kind": "human",
             "isResolved": false,
-            "imagePath": "assets/images/question8.png"
+            "imagePath": "assets/images/question8.png",
+            "hint": "打ったことがあるでしょう。"
         },
         {
             "id": 9,
             "kind": "human",
             "isResolved": false,
-            "imagePath": "assets/images/question9.png"
+            "imagePath": "assets/images/question9.png",
+            "hint": "コンピュータになりきりましょう。"
         },
         {
             "id": 10,
             "kind": "final",
             "isResolved": false,
-            "imagePath": "assets/images/question10.png"
+            "imagePath": "assets/images/question10.png",
+            "hint": "最終問題はヒントなしで行きましょう！"
         }
     ]
 }

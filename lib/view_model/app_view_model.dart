@@ -44,6 +44,7 @@ class AppViewModel extends ChangeNotifier {
       kind: targetItem.kind,
       isResolved: true,
       imagePath: targetItem.imagePath,
+      hint: targetItem.hint,
     );
     final newsItems =
     _items.map((value) => value.id == id ? newItem : value).toList();

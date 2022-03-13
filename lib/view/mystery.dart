@@ -14,6 +14,54 @@ class Mystery extends StatefulWidget {
 }
 
 class _MysteryState extends State<Mystery> {
+  void _checkHint() {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: const Text(Strings.hintCheckTitle),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(Strings.yesButton),
+              onPressed: () {
+                _dismiss();
+                _showHint();
+              },
+            ),
+            TextButton(
+              child: const Text(Strings.noButton),
+              onPressed: () => _dismiss(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showHint() {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: const Text(Strings.hintTitle),
+          content: Text(widget.item.hint),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(Strings.closeButton),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _dismiss() {
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final item = widget.item;
@@ -55,15 +103,15 @@ class _MysteryState extends State<Mystery> {
               ],
             ),
           ),
-          // Positioned(
-          //   right: 20.w,
-          //   bottom: 116.h,
-          //   child: FloatingActionButton(
-          //     child: const Icon(Icons.lightbulb),
-          //     backgroundColor: AppColors.mainColor,
-          //     onPressed: () { print("ssss");},
-          //   ),
-          // ),
+          Positioned(
+            right: 20.w,
+            bottom: 156.h,
+            child: FloatingActionButton(
+              child: const Icon(Icons.lightbulb),
+              backgroundColor: AppColors.mainColor,
+              onPressed: () => _checkHint(),
+            ),
+          ),
         ],
       ),
     );

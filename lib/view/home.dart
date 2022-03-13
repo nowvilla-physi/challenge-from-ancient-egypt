@@ -47,7 +47,7 @@ class _HomeState extends ConsumerState<Home> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final clearedCount =
-        ref.watch(appViewModelNotifierProvider).clearedCount ?? 0123;
+        ref.watch(appViewModelNotifierProvider).clearedCount ?? 0;
     return Scaffold(
       body: SafeArea(
         child: Stack(
