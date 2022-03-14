@@ -53,6 +53,7 @@ class _HomeState extends ConsumerState<Home> {
         child: Stack(
           children: <Widget>[
             Container(
+              width: size.width,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/home-background.png'),

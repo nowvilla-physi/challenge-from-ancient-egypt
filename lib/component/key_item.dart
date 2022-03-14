@@ -32,8 +32,10 @@ class KeyItem extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            child: Image.asset('assets/images/key_background.png',
-                fit: BoxFit.cover),
+            child: Image.asset(
+              'assets/images/key_background.png',
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 32.0.w, vertical: 16.h),
@@ -52,8 +54,11 @@ class KeyItem extends StatelessWidget {
                     ],
                   ),
                   child: SizedBox(
-                    width: size.width * 0.6,
-                    child: Image.asset(imagePath),
+                    width: double.infinity,
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
                 Container(

@@ -7,6 +7,7 @@ import '../importer.dart';
 class AppRepositoryImpl implements AppRepository {
   final _prefDataKey = 'DATA_KEY';
   final _prefClearKey = 'CLEAR_COUNT_KEY';
+  final _prefIsDisplayKey = 'IS_DISPLAY_KEY';
   final _dataKey = 'data';
 
   @override
@@ -20,7 +21,6 @@ class AppRepositoryImpl implements AppRepository {
     } else {
       data = json.decode(cache)[_dataKey];
     }
-    print('data: $data');
     return _createMysteryItems(data);
   }
 
@@ -59,6 +59,21 @@ class AppRepositoryImpl implements AppRepository {
           .doc('cleared')
           .update({'num': clearedCount + 1});
       prefs.setBool(_prefClearKey, true);
+    }
+  }
+
+  @override
+  Future<bool?> isDisplayLastMystery() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_prefIsDisplayKey);
+  }
+
+  @override
+  Future<void> saveIsDisplayLastMystery() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final cache = prefs.getBool(_prefIsDisplayKey);
+    if (cache == null) {
+      prefs.setBool(_prefIsDisplayKey, true);
     }
   }
 }

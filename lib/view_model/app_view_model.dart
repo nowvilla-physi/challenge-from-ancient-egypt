@@ -23,8 +23,8 @@ class AppViewModel extends ChangeNotifier {
     return _appRepository
         .getMysteryItems()
         .then((value) {
-      _items = value;
-    })
+          _items = value;
+        })
         .catchError((dynamic error) {})
         .whenComplete(() => notifyListeners());
   }
@@ -47,7 +47,7 @@ class AppViewModel extends ChangeNotifier {
       hint: targetItem.hint,
     );
     final newsItems =
-    _items.map((value) => value.id == id ? newItem : value).toList();
+        _items.map((value) => value.id == id ? newItem : value).toList();
     _appRepository.saveItem(newsItems);
     _items = newsItems;
     notifyListeners();
@@ -55,5 +55,13 @@ class AppViewModel extends ChangeNotifier {
 
   Future<void> saveClearCount() async {
     return _appRepository.saveClearedCount();
+  }
+
+  Future<bool?> isDisplayLastMystery() async {
+    return _appRepository.isDisplayLastMystery();
+  }
+
+  Future<void> saveIsDisplayLastMystery() async {
+    return _appRepository.saveIsDisplayLastMystery();
   }
 }

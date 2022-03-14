@@ -68,51 +68,61 @@ class _MysteryState extends State<Mystery> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            child: Column(
-              children: <Widget>[
-                Image.asset(item.imagePath),
-                Stack(
-                  children: [
-                    Container(
-                      transform: Matrix4.translationValues(0.0, -12.0, 0.0),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 32.h),
+          child: Stack(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
                       width: size.width,
-                      height: 24.h,
-                      decoration: const BoxDecoration(
-                        color: AppColors.baseColor,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16.0),
-                          topRight: Radius.circular(16.0),
-                        ),
+                      child: Image.asset(
+                        item.imagePath,
+                        fit: BoxFit.contain,
                       ),
                     ),
-                    Column(
+                    Stack(
                       children: [
-                        Answer(id: item.id),
                         Container(
-                          margin: EdgeInsets.only(top: 48.h),
-                          child: const AppBackButton(),
+                          transform: Matrix4.translationValues(0.0, -12.0, 0.0),
+                          width: size.width,
+                          height: 24.h,
+                          decoration: const BoxDecoration(
+                            color: AppColors.baseColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16.0),
+                              topRight: Radius.circular(16.0),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Answer(id: item.id),
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                            FloatingActionButton(
+                              child: const Icon(Icons.lightbulb),
+                              backgroundColor: AppColors.mainColor,
+                              onPressed: () => _checkHint(),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 32.h),
+                              child: const AppBackButton(),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Positioned(
-            right: 20.w,
-            bottom: 156.h,
-            child: FloatingActionButton(
-              child: const Icon(Icons.lightbulb),
-              backgroundColor: AppColors.mainColor,
-              onPressed: () => _checkHint(),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
