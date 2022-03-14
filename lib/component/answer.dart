@@ -79,6 +79,14 @@ class _AnswerState extends ConsumerState<Answer> {
       _input = "";
       _textEditingController.clear();
     });
+    _doUnFocus();
+  }
+
+  void _doUnFocus() {
+    final FocusScopeNode currentScope = FocusScope.of(context);
+    if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+      FocusManager.instance.primaryFocus?.unfocus();
+    }
   }
 
   Future<void> _save() async {

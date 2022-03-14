@@ -31,16 +31,26 @@ class _ImageButtonState extends State<ImageButton> {
       padding: EdgeInsets.symmetric(horizontal: 48.w, vertical: 16.h),
       child: Stack(
         children: <Widget>[
-          Image.asset(widget.imagePath),
-          Container(
-            margin: EdgeInsets.only(top: 184.h),
-            alignment: Alignment.center,
-            child: SelectButton(
-              textColor: _isResolved ? AppColors.green : AppColors.mainColor,
-              backgroundColor: AppColors.white,
-              action: _toMystery,
-              name: _isResolved ? Strings.clearButton : Strings.releaseButton,
-              width: size.width * 0.4,
+          SizedBox(
+            width: size.width,
+            child: Image.asset(
+              widget.imagePath,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                margin: EdgeInsets.only(top: size.height * 0.2),
+                child: SelectButton(
+                  textColor: _isResolved ? AppColors.green : AppColors.mainColor,
+                  backgroundColor: AppColors.white,
+                  action: _toMystery,
+                  name: _isResolved ? Strings.clearButton : Strings.releaseButton,
+                  width: size.width * 0.4,
+                ),
+              ),
             ),
           )
         ],

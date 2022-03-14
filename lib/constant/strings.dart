@@ -2,6 +2,7 @@ class Strings {
   // Title.
   static const appTitle = '古代エジプトからの挑戦状';
   static const hintTitle = 'ヒント';
+  static const lastTitle = '最後の謎';
   static const hintCheckTitle = 'ヒントを見ますか？';
 
   // Button.
@@ -36,4 +37,5 @@ class Strings {
   static const hintMsg = 'ヒントを見てもいいぞ。';
   static const nextMsg = '次の謎は果たして解けるかな。';
   static const rethinkMsg = 'もう一度よく考えてみろ。';
+  static const lastMsg = '最後の謎が解放されました。';
 }

@@ -51,7 +51,6 @@ class _KeyListState extends ConsumerState<KeyList> {
   @override
   Widget build(BuildContext context) {
     _createMysteryItems();
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -60,7 +59,7 @@ class _KeyListState extends ConsumerState<KeyList> {
               padding: EdgeInsets.only(top: Dimens.verticalPadding.h),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: size.height * 0.5,
+                  height: 424.h,
                   enableInfiniteScroll: false,
                   onPageChanged: (index, _) {
                     setState(() {
