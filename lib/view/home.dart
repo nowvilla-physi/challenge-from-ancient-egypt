@@ -49,14 +49,15 @@ class _HomeState extends ConsumerState<Home> {
     final clearedCount =
         ref.watch(appViewModelNotifierProvider).clearedCount ?? 0;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: <Widget>[
             Container(
-              width: size.width,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/home-background.png'),
+                  fit: BoxFit.contain
                 ),
               ),
             ),
