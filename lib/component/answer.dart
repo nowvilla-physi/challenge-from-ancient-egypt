@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'dart:io';
 import '../importer.dart';
 
 class Answer extends ConsumerStatefulWidget {
@@ -16,8 +18,72 @@ class Answer extends ConsumerStatefulWidget {
 }
 
 class _AnswerState extends ConsumerState<Answer> {
+  static String get interstitialAdUnitId {
+    if (Platform.isAndroid) {
+      return dotenv.get("ADMOB_ANDROID_INTERSTITIAL_ID");
+    } else {
+      return dotenv.get("ADMOB_IOS_INTERSTITIAL_ID");
+    }
+  }
+
+  static const int maxFailedLoadAttempts = 3;
   late String answer;
   String _input = "";
+  InterstitialAd? _interstitialAd;
+  int _numInterstitialLoadAttempts = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    answer = dotenv.get('ANSWER${widget.id}');
+    _createInterstitialAd();
+  }
+
+  void _createInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: interstitialAdUnitId,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          print('Interstitial ad loaded.');
+          _interstitialAd = ad;
+          _numInterstitialLoadAttempts = 0;
+          _interstitialAd!.setImmersiveMode(true);
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          print('InterstitialAd failed to load: $error.');
+          _numInterstitialLoadAttempts += 1;
+          _interstitialAd = null;
+          if (_numInterstitialLoadAttempts < maxFailedLoadAttempts) {
+            _createInterstitialAd();
+          }
+        },
+      ),
+    );
+  }
+
+  void _showInterstitialAd() {
+    if (_interstitialAd == null) {
+      print('Warning: attempt to show interstitial before loaded.');
+      return;
+    }
+    _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
+      onAdShowedFullScreenContent: (InterstitialAd ad) =>
+          print('ad onAdShowedFullScreenContent.'),
+      onAdDismissedFullScreenContent: (InterstitialAd ad) {
+        print('$ad onAdDismissedFullScreenContent.');
+        ad.dispose();
+        _createInterstitialAd();
+      },
+      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+        print('$ad onAdFailedToShowFullScreenContent: $error');
+        ad.dispose();
+        _createInterstitialAd();
+      },
+    );
+    _interstitialAd!.show();
+    _interstitialAd = null;
+  }
 
   final snackBar = SnackBar(
     backgroundColor: AppColors.red,
@@ -42,17 +108,12 @@ class _AnswerState extends ConsumerState<Answer> {
 
   final _textEditingController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    answer = dotenv.get('ANSWER${widget.id}');
-  }
-
   void _check() async {
     if (_input.trim().isEmpty) {
       _clearEmptyAlert();
       _showEmptyAlert();
     } else {
+      _showInterstitialAd();
       _toJudgement();
     }
   }
@@ -142,5 +203,11 @@ class _AnswerState extends ConsumerState<Answer> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _interstitialAd?.dispose();
   }
 }

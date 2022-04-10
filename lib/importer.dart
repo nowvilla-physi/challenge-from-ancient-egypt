@@ -1,5 +1,6 @@
 export 'app.dart';
 export 'constant/colors.dart';
+export 'component/ad_banner.dart';
 export 'component/answer.dart';
 export 'component/back_button.dart';
 export 'component/image_button.dart';
