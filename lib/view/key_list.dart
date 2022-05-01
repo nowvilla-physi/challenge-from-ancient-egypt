@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../importer.dart';
 
 class KeyList extends ConsumerStatefulWidget {
@@ -52,64 +53,72 @@ class _KeyListState extends ConsumerState<KeyList> {
   Widget build(BuildContext context) {
     _createMysteryItems();
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: Dimens.verticalPadding.h),
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  height: 424.h,
-                  enableInfiniteScroll: false,
-                  onPageChanged: (index, _) {
-                    setState(() {
-                      _currentPosition = index;
-                    });
-                  },
-                ),
-                items: _initialKeyList.map((item) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                        margin: EdgeInsets.symmetric(horizontal: 8.w),
-                        child: KeyItem(
-                          imagePath: item['imagePath']!,
-                          kind: item['kind']!,
-                          title: item['title']!,
-                        ),
+      body: Stack(
+        children: <Widget>[
+          SafeArea(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: Dimens.verticalPadding.h),
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      height: 424.h,
+                      enableInfiniteScroll: false,
+                      onPageChanged: (index, _) {
+                        setState(() {
+                          _currentPosition = index;
+                        });
+                      },
+                    ),
+                    items: _initialKeyList.map((item) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            margin: EdgeInsets.symmetric(horizontal: 8.w),
+                            child: KeyItem(
+                              imagePath: item['imagePath']!,
+                              kind: item['kind']!,
+                              title: item['title']!,
+                            ),
+                          );
+                        },
                       );
-                    },
-                  );
-                }).toList(),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _initialKeyList.asMap().entries.map((entry) {
-                return GestureDetector(
-                  child: Container(
-                    width: Dimens.dotWidth.w,
-                    height: Dimens.dotHeight.h,
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 4.w,
-                      vertical: 8.h,
-                    ),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.white.withOpacity(
-                        _currentPosition == entry.key ? 1.0 : 0.5,
-                      ),
-                    ),
+                    }).toList(),
                   ),
-                );
-              }).toList(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _initialKeyList.asMap().entries.map((entry) {
+                    return GestureDetector(
+                      child: Container(
+                        width: Dimens.dotWidth.w,
+                        height: Dimens.dotHeight.h,
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 4.w,
+                          vertical: 8.h,
+                        ),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.white.withOpacity(
+                            _currentPosition == entry.key ? 1.0 : 0.5,
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 48.h),
+                  child: const AppBackButton(),
+                ),
+              ],
             ),
-            Container(
-              margin: EdgeInsets.only(top: 48.h),
-              child: const AppBackButton(),
-            ),
-          ],
-        ),
+          ),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: AdBanner(size: AdSize.fullBanner),
+          ),
+        ],
       ),
     );
   }
